@@ -13,6 +13,7 @@ const Context = ({ children }) => {
   const [signUpUserName, SetSignUpUserName] = useState(loggedInUser.userName);
   const [signUpFirstName, SetSignUpFirstName] = useState("");
   const [signUpLastName, SetSignUpLastName] = useState("");
+  const baseUrl = "https://realestate-fullstack-cs9u.onrender.com"
   useEffect(() => {
     setSignUpEmail(loggedInUser.email);
     SetSignUpUserName(loggedInUser.userName);
@@ -42,7 +43,7 @@ const Context = ({ children }) => {
         "Content-Type": "application/json", // Specify that the content is JSON
       },
     };
-    const res = await fetch("http://localhost:10000/users/update", option);
+    const res = await fetch(`${baseUrl}/users/update`, option);
     const data = await res.json();
     console.log(data);
     setLoggedInUser(data.data);
@@ -63,7 +64,7 @@ const Context = ({ children }) => {
       credentials: "include",
     };
     try {
-      const res = await fetch("http://localhost:10000/users/login", option);
+      const res = await fetch(`${baseUrl}/users/login`, option);
       const data = await res.json();
       if (data.newuser) {
         setLoggedInUser(data.newuser);
@@ -83,7 +84,7 @@ const Context = ({ children }) => {
       credentials: "include",
     };
     try {
-      const res = await fetch("http://localhost:10000/users", option);
+      const res = await fetch(`${baseUrl}/users`, option);
       const data = await res.json();
       console.log(data);
       if (data.status) {
@@ -102,7 +103,7 @@ const Context = ({ children }) => {
       credentials: "include",
     };
     try {
-      const res = await fetch("http://localhost:10000/users/signout", option);
+      const res = await fetch(`${baseUrl}/users/signout`, option);
       const data = await res.json();
       console.log(data);
       // navigateTo("/signIn");
@@ -133,7 +134,7 @@ const Context = ({ children }) => {
       },
     };
     try {
-      const res = await fetch("http://localhost:10000/users/register", option);
+      const res = await fetch(`${baseUrl}/users/register`, option);
       const data = await res.json();
       console.log(data);
     } catch (error) {
