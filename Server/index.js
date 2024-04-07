@@ -10,7 +10,9 @@ const multer = require("multer");
 const cookiesParser = require("cookie-parser");
 
 dotEnv.config();
-app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
+app.use(
+  cors({ credentials: true, origin: "https://real-estate-j.vercel.app" })
+);
 app.use(bodyParser.json());
 app.use(cookiesParser());
 
